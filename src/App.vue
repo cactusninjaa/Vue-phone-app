@@ -4,9 +4,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <nav>
-    <RouterLink to="/">Journal</RouterLink>
+    <RouterLink to="/">Call log</RouterLink>
     <RouterLink to="/contact">Contact</RouterLink>
-    <RouterLink to="/keyboard">Keyboard</RouterLink>
+    <RouterLink to="/keyboard">Keypad</RouterLink>
   </nav>
 
   <RouterView />
