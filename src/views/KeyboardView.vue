@@ -102,7 +102,7 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: var(--color-text);
   font-size: 30px;
   margin-bottom: 10px;
   height: 40px;
