@@ -50,6 +50,7 @@ import { useContactStore } from '@/stores/contact';
 <template>
     <main>
         <div class="container">
+            <h1>Create new contact</h1>
             <div>
                 <input type="text" name="name" id="" placeholder="Name" v-model="inputName" @click="increeseName()">
                 <p v-if="!inputName && nameCounter!=0">Field can't be empty</p>
@@ -59,7 +60,7 @@ import { useContactStore } from '@/stores/contact';
                 <p v-if="!inputPhone && phoneCounter!=0">Field can't be empty</p>
             </div>
     
-            <button @click="addContact()">Create new contact</button>
+            <button @click="addContact()">Create</button>
         </div>
 
     </main>
@@ -72,6 +73,9 @@ main{
   flex-direction: column;  
   justify-content: center;
   align-items: center;
+}
+h1{
+    margin-bottom: 20px;
 }
 .container{
     width: 100%;
