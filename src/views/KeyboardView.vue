@@ -21,10 +21,13 @@
     },
     methods: {
         checkContact(){
+          this.contactName = '';
           this.contactStore.contacts.forEach(contact => {
-            if (this.phoneNumber == contact.phoneNumber)
-                this.contactName = contact.name;
-            });
+            if (this.phoneNumber == contact.phoneNumber){
+              this.contactName = contact.name;
+            }
+          });
+            
         },
         addNumber(number) {
             this.phoneNumber += number;
@@ -38,6 +41,14 @@
             this.phoneNumber = '';
             this.contactName = '';
             this.propsName = '';
+        },
+        erase() {
+            this.phoneNumber = this.phoneNumber.slice(0, -1);
+            this.checkContact();
+            if (this.contactName)
+              this.propsName = this.contactName;
+            else
+              this.propsName = this.phoneNumber;
         }
         
     },
@@ -58,37 +69,54 @@
         <button v-for="number in numbers" class="key" @click="addNumber(number)">
             {{ number }}
         </button>
+        <div></div>
+        <CallButton :name="propsName" @click="clear()"/>
+        <div v-if="this.phoneNumber !=''" class="erase key" @click="erase()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            viewBox="0 0 489.425 489.425" xml:space="preserve">
+              <path d="M122.825,394.663c17.8,19.4,43.2,30.6,69.5,30.6h216.9c44.2,0,80.2-36,80.2-80.2v-200.7c0-44.2-36-80.2-80.2-80.2h-216.9
+                c-26.4,0-51.7,11.1-69.5,30.6l-111.8,121.7c-14.7,16.1-14.7,40.3,0,56.4L122.825,394.663z M29.125,233.063l111.8-121.8
+                c13.2-14.4,32-22.6,51.5-22.6h216.9c30.7,0,55.7,25,55.7,55.7v200.6c0,30.7-25,55.7-55.7,55.7h-217c-19.5,0-38.3-8.2-51.5-22.6
+                l-111.7-121.8C23.025,249.663,23.025,239.663,29.125,233.063z"/>
+              <path d="M225.425,309.763c2.4,2.4,5.5,3.6,8.7,3.6s6.3-1.2,8.7-3.6l47.8-47.8l47.8,47.8c2.4,2.4,5.5,3.6,8.7,3.6s6.3-1.2,8.7-3.6
+                c4.8-4.8,4.8-12.5,0-17.3l-47.9-47.8l47.8-47.8c4.8-4.8,4.8-12.5,0-17.3s-12.5-4.8-17.3,0l-47.8,47.8l-47.8-47.8
+                c-4.8-4.8-12.5-4.8-17.3,0s-4.8,12.5,0,17.3l47.8,47.8l-47.8,47.8C220.725,297.263,220.725,304.962,225.425,309.763z"/>
+          </svg>
+        </div>
+
     </div>
-    <CallButton :name="propsName" @click="clear()"/>
+
   </main>
 </template>
 
 <style scoped>
 main{
-  margin-top: 30px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 .contact-place,
 .number-input{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 10px;
-  color: #222;
-  padding: 20px;
+  color: black;
+  font-size: 30px;
   margin-bottom: 10px;
-  height: 30px;
+  height: 40px;
 }
 .call-button{
   display: flex;
   justify-content: center;
-  background-color: green;
-  border-radius: 10px;
-  color: white;
+  background-color: #00E16A;
+  border-radius: 100px;
+  color: black;
   padding: 6px 20px;
   margin-bottom: 20px;
-  height: 50px;
-  width: 100%;
+  height: 100px;
+  width: 100px;
   border: none;
 }
 .call-button img{
@@ -96,17 +124,31 @@ main{
 }
 
 .keyboard-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 400px;
 }
 .key{
-    background-color: white;
-    border-radius: 10px;
-    color: #222;
-    padding: 20px;
-    text-align: center;
-    border: none;
+  background-color: #B1B1B1;
+  border-radius: 50px;
+  color: #222;
+  padding: 20px;
+  text-align: center;
+  border: none;
+  font-size: 22px;
+  width: 100px;
+  height: 100px;
+}
+
+svg{
+  width: 40px;
+  height: 40px;
+}
+.erase{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

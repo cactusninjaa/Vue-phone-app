@@ -16,22 +16,31 @@
 <template>
     <div class="contact-card">
         <h3>{{ contact.name }}</h3>
-        <p>{{ contact.phoneNumber }}</p>
-        <CallButton :name="contact.name"/>
+        <p class="phone">{{ contact.phoneNumber }}</p>
+        <div class="button">
+            <CallButton :name="contact.name"/>
+        </div>
     </div>
 </template>
 
 <style scoped>
 .contact-card{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     border-radius: 10px;
     color: #222;
-    padding: 20px;
     margin-bottom: 10px;
+    align-items: center;
+    background-color: #E5E5E5;
+    padding: 8px 12px;
     width: 100%;
+}
+.phone{
+    justify-self: center;
+}
+.button{
+    justify-self: flex-end;
+
 }
 
 </style>

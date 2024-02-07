@@ -49,23 +49,33 @@ import { useContactStore } from '@/stores/contact';
 
 <template>
     <main>
-        <div>
-            <input type="text" name="name" id="" placeholder="Name" v-model="inputName" @click="increeseName()">
-            <p v-if="!inputName && nameCounter!=0">Field can't be empty</p>
+        <div class="container">
+            <div>
+                <input type="text" name="name" id="" placeholder="Name" v-model="inputName" @click="increeseName()">
+                <p v-if="!inputName && nameCounter!=0">Field can't be empty</p>
+            </div>
+            <div>
+                <input type="number" name="phoneNumber" id="" placeholder="0000000000" v-model="inputPhone" @click="increesePhone()">
+                <p v-if="!inputPhone && phoneCounter!=0">Field can't be empty</p>
+            </div>
+    
+            <button @click="addContact()">Create new contact</button>
         </div>
-        <div>
-            <input type="number" name="phoneNumber" id="" placeholder="0000000000" v-model="inputPhone" @click="increesePhone()">
-            <p v-if="!inputPhone && phoneCounter!=0">Field can't be empty</p>
-        </div>
-
-        <button @click="addContact()">Create new contact</button>
 
     </main>
 </template>
 
 <style scoped>
 main{
-  margin-top: 30px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+}
+.container{
+    width: 100%;
+    max-width: 500px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -77,24 +87,23 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #E5E5E5;
   border-radius: 10px;
-  color: #222;
   padding: 20px ;
   width: 100%;
   height: 30px;
   border: none;
 }
 div{
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 button{
   width: 100%;
-  background-color: green;
+  background-color: #00E16A;
   border: none;
   border-radius: 10px;
-  color: black;
+  color: white;
   text-decoration: none;
   font-size: 20px;
   padding: 10px;

@@ -6,18 +6,18 @@ export const useJournalStore = defineStore ('journal', {
       {
         name: 'Anthony',
         hour: '11h11',
-        date: '11/11/1111'
+        date: '04/12/2022'
       },
       {
         name: 'Maxence',
         hour: '12h12',
-        date: '12/12/1212'
+        date: '30/08/2021'
     
       },
       {
         name: '0222222222',
         hour: '02h22',
-        date: '02/02/0202'
+        date: '07/10/2002'
       }
     ]
   }),
@@ -27,7 +27,7 @@ export const useJournalStore = defineStore ('journal', {
         const contact = {
             name: name,
             hour: `${now.getHours()}h${now.getUTCMinutes()} `,
-            date: `${now.getDate()}/ ${now.getMonth()+1} / ${now.getUTCFullYear()}`
+            date: `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth()+1).toString().padStart(2, "0")}/${now.getUTCFullYear()}`
         }
         this.journals.unshift(contact)
     }

@@ -15,23 +15,31 @@
 <template>
     <div class="journal-card">
         <h3>{{ journal.name }}</h3>
-        <p>{{ journal.hour }}</p>
-        <p>{{ journal.date }}</p>
-        <CallButton :name="journal.name"/>
+        <p class="hour">{{ journal.hour }}</p>
+        <p class="date">{{ journal.date }}</p>
+        <div class="button">
+            <CallButton :name="journal.name"/>
+        </div>
     </div>
 </template>
 
 <style scoped>
 .journal-card{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     background-color: white;
+    align-items: center;
+    background-color: #E5E5E5;
+    padding: 8px 12px;
     border-radius: 10px;
     color: #222;
     margin-bottom: 10px;
-
-    padding: 10px 10px;
 }
-
+.date, .hour{
+    justify-self: center;
+}
+.button{
+    justify-self: flex-end;
+}
 </style>

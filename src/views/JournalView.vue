@@ -28,13 +28,29 @@
 
 <template>
   <main>
-    <JournalCard v-for="journal in journalStore.journals" :key="journal.name" :journal="journal" />
+    <div class="container">
+      <h1>Recents</h1>
+      <JournalCard v-for="journal in journalStore.journals" :key="journal.name" :journal="journal" />
+    </div>
+  
   </main>
 </template>
 
 <style scoped>
-main{
-  margin-top: 30px;
+main{    
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+}  
+.container{
+  width: 100%;
+  max-width: 500px;
+}
+h1{
+  margin-bottom: 20px;
+  align-self: flex-start;
 }
 
 </style>
